@@ -1,0 +1,17 @@
+.form, form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+input{
+    padding: 5px;
+    margin: 10px;
+}
+
+input[type=submit]{
+    width: 90%;
+    cursor: pointer;
+}
