@@ -1,8 +1,11 @@
 import React from 'react'
 import './SignUp.css'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { signUpUser } from '../../Redux/AuthSlice'
 //import axios from 'axios'
 const SignUp = () => {
+    const dispatch = useDispatch();
     const [input, setInput] = useState({
         username: '',
         email: '',
@@ -20,17 +23,7 @@ const SignUp = () => {
 
     async function handleSubmit(e) {
         e.preventDefault()
-        let res = await fetch('https://reqres.in/api/register', {
-            method: 'POST',
-            headers: {
-                "Content-Type": 'application/json',
-                "accept": 'application/json'
-            },
-            body: JSON.stringify(input)
-        }) 
-        let data = await res.json()
-        console.log(data)
-        localStorage.setItem('user-info', JSON.stringify(data))
+        dispatch(signUpUser(input))
     }
 
   return (
